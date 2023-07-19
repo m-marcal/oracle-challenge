@@ -1,0 +1,9 @@
+FROM container-registry.oracle.com/database/express:latest
+
+COPY include/create_developer_oraclexe.template /scripts/create_developer.sql
+
+EXPOSE 8080
+EXPOSE 1521
+EXPOSE 5500
+
+CMD ["/bin/sh", "-c", "exec $ORACLE_BASE/$RUN_FILE"]

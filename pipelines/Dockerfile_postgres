@@ -1,0 +1,9 @@
+FROM postgres:latest
+
+COPY include/create_developer.sql /scripts/
+
+EXPOSE 5432
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD ["postgres"]

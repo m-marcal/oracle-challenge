@@ -1,0 +1,18 @@
+CONNECT sys/root AS SYSDBA;
+
+ALTER SESSION SET container = XEPDB1;
+
+CREATE USER developer IDENTIFIED BY root;
+
+GRANT CREATE SESSION TO developer;
+
+GRANT CREATE TABLE TO developer;
+
+COMMIT;
+
+CONNECT developer/root@XEPDB1;
+
+CREATE TABLE departments (
+    department_id NUMBER GENERATED ALWAYS AS IDENTITY,
+    department_name VARCHAR2(255) NOT NULL
+);

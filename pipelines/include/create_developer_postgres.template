@@ -1,0 +1,21 @@
+CREATE DATABASE devapp;
+
+-- Switch to the devapp database
+\c devapp;
+
+CREATE TABLE IF NOT EXISTS departments (
+  DEPT INT NOT NULL,
+  DEPT_NAME VARCHAR(250) NOT NULL
+);
+
+INSERT INTO departments (DEPT, DEPT_NAME)
+VALUES
+  (1001, 'Department A'),
+  (1002, 'Department B'),
+  (1003, 'Department C');
+
+CREATE USER developer WITH ENCRYPTED PASSWORD '<PASSWORD>';
+
+-- Grant privileges to the developer
+ALTER DATABASE devapp OWNER TO developer;
+GRANT ALL PRIVILEGES ON TABLE departments TO developer;
